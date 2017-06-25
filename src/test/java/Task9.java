@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,6 +15,9 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import java.io.File;
 import java.io.IOException;
 
+
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -32,10 +37,10 @@ public class Task9 {
 
 
     @Before
-    public void doPreconditions() {
+    public void doPreconditions() throws MalformedURLException {
 
-        driver = new EventFiringWebDriver(new FirefoxDriver());
-        driver.register(new EventsListener());
+        driver = new EventFiringWebDriver(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.firefox()));
+       driver.register(new EventsListener());
 
         wait = new WebDriverWait(driver, 10);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
