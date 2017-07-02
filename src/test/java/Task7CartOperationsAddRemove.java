@@ -3,9 +3,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
@@ -55,6 +59,12 @@ public class Task7CartOperationsAddRemove {
             int qntBefore = Integer.parseInt(quantiyBefore);
             System.out.println("Number of items in cart before adding = " + quantiyBefore);
             int qntExpected = qntBefore + 1;
+            //If Yellow Duck
+            List<WebElement> selectsize =  driver.findElements(By.xpath("//*[@class='form-control' and @name='options[Size]']"));
+            if (selectsize.size()>0){
+                Select dropdown = new Select(driver.findElement(By.xpath("//*[@class='form-control' and @name='options[Size]']")));
+                dropdown.selectByVisibleText("Small");
+            }
 
             driver.findElement(By.xpath("html/body/div[2]/div/div[2]/div[1]/div[3]/div/div[4]/form/div/div/div[2]/button")).click();
 
