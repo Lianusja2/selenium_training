@@ -38,9 +38,7 @@ public class Task4new {
         driver.findElement(USER_NAME_INPUT_FIELD).sendKeys(logIn);
         driver.findElement(PASSWORD_INPUT_FIELD).sendKeys(logIn);
         driver.findElement(LOGIN_BUTTON).click();
-        wait.until(elementToBeClickable(By.xpath("//*[@href='http://localhost:9000/litecart/admin/?app=catalog&doc=catalog']")));
-
-
+        wait.until(elementToBeClickable(By.xpath("//*[contains(@href,'/?app=catalog&doc=catalog')]")));
     }
 
     @After
