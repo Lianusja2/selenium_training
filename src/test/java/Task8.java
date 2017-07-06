@@ -27,6 +27,7 @@ public class Task8 {
     private String logIn = "admin";
     public WebDriver driver;
     public WebDriverWait wait;
+    private String baseURL = "http://localhost:9000/litecart/admin/";
 
 
     @Before
@@ -43,7 +44,7 @@ public class Task8 {
         wait = new WebDriverWait(driver, 10);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         System.out.println("Logging in to AC");
-        driver.get("http://localhost:9000/litecart/admin/");
+        driver.get("baseURL");
         driver.findElement(USER_NAME_INPUT_FIELD).sendKeys(logIn);
         driver.findElement(PASSWORD_INPUT_FIELD).sendKeys(logIn);
         driver.findElement(LOGIN_BUTTON).click();
@@ -65,7 +66,7 @@ public class Task8 {
     public void verifyThatlinksAreOpenedInNewWindow() {
         System.out.println("Checking if links opened in new window");
 
-        driver.get("http://localhost:9000/litecart/admin/?app=countries&doc=countries");
+        driver.get(baseURL+"?app=countries&doc=countries");
         driver.findElement(By.xpath("//*[contains(@href,'/?app=countries&doc=edit_country')]")).click();
         String originalHandle = driver.getWindowHandle();
         Set<String> existWs = driver.getWindowHandles();

@@ -18,7 +18,7 @@ public class Task5CorrectPageIsOpened {
 
 
 
-    private final String ITEM_PRODUCT = "//*[@id='campaign-products']//*[@href='http://localhost:9000/litecart/en/rubber-ducks-c-1/subcategory-c-2/yellow-duck-p-1']//div[@class='info']";
+    private final String ITEM_PRODUCT = "//*[@id='campaign-products']//*[contains(@href,'/rubber-ducks-c-1/subcategory-c-2/yellow-duck-p-1')]//div[@class='info']";
 
 
 
